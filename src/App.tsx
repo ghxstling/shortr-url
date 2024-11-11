@@ -1,25 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Grid2,
+  Box,
+  Stack,
+} from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Stack spacing={5}>
+        <Box>
+          <Typography variant="h1">Shortr</Typography>
+          <Typography variant="overline">Made by ghxstling</Typography>
+        </Box>
+        <Box>
+          <Grid2
+            container
+            direction={"row"}
+            spacing={5}
+            sx={{ justifyContent: "center" }}
+          >
+            <TextField
+              variant="outlined"
+              placeholder="www.example.com"
+              sx={{
+                width: "50vh",
+              }}
+            />
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "white",
+                color: "black",
+              }}
+            >
+              Shorten URL!
+            </Button>
+          </Grid2>
+        </Box>
+        <Box
+          sx={{
+            width: "85vh",
+            height: "40vh",
+            bgcolor: "white",
+            color: "black",
+            padding: 1,
+            borderRadius: 5,
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          dsaddasdsad
+        </Box>
+      </Stack>
+    </>
   );
 }
 
