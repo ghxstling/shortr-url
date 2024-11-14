@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import {
   Button,
   TextField,
@@ -12,7 +11,14 @@ import {
   ThemeProvider,
   Link,
 } from "@mui/material";
-import { centerContent, theme } from "./theme.tsx";
+import "./theme.tsx";
+import { boxStyle, centerContent, theme } from "./theme.tsx";
+
+const shortenUrl = async (url: string) => {
+  const res = await fetch(`https://ulvis.net/api/write/post?url=${url}`).then(
+    (res) => res.json()
+  );
+};
 
 function Header() {
   return (
@@ -33,7 +39,7 @@ function Header() {
             fontSize: "1rem",
           }}
         >
-          A free URL shortening website made by ghxstling
+          A free URL shortening website
         </Typography>
       </Box>
     </>
@@ -47,28 +53,24 @@ function URL() {
         <Paper
           elevation={10}
           sx={{
-            width: "60rem",
-            height: "10rem",
-            bgcolor: "white",
-            color: "black",
-            borderRadius: 3,
+            ...boxStyle,
             ...centerContent,
+            height: "10rem",
           }}
         >
           <Grid2>
-            <Grid2>
-              <Typography
-                variant="h5"
-                gutterBottom
-                sx={{
-                  fontWeight: "bold",
-                }}
-              >
-                Paste your URL Here:
-              </Typography>
-            </Grid2>
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
+              Paste your URL Here:
+            </Typography>
             <Grid2 container spacing={2}>
               <TextField
+                fullWidth
                 variant="outlined"
                 placeholder="https://www.example.com/"
                 sx={{
@@ -77,6 +79,7 @@ function URL() {
               />
               <Button
                 variant="contained"
+                onClick={() => shortenUrl("www.google.com")}
                 sx={{
                   bgcolor: "#096bb1",
                   color: "white",
@@ -104,12 +107,16 @@ function Information() {
             bgcolor: "white",
             color: "black",
             padding: 1,
-            mt: 10,
+            // mt: 10,
             borderRadius: 3,
           }}
         >
-          ShortrURL is a service that allows you to shorten your URL links -
-          quick and easy!
+          <Container>
+            <Typography>
+              ShortrURL is a free service that allows you to shorten your URL
+              links - quick and easy!
+            </Typography>
+          </Container>
         </Paper>
       </Box>
     </>
@@ -131,11 +138,7 @@ function Footer() {
         <Typography variant="body1" color="white">
           {"Copyright © "}
           {new Date().getFullYear()}{" "}
-          <Link
-            href="https://github.com/ghxstling"
-            target="_blank"
-            color="inherit"
-          >
+          <Link href="https://ghxstling.info/" target="_blank" color="inherit">
             {"Dylan Choy"}
           </Link>
         </Typography>

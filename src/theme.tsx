@@ -12,3 +12,11 @@ export const theme = createTheme({
     fontFamily: "Ubuntu",
   },
 });
+
+export const boxStyle = {
+  width: "60rem",
+  minWidth: "700px",
+  borderRadius: 3,
+  bgcolor: "white",
+  color: "black",
+};
